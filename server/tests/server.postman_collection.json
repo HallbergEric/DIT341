@@ -1,0 +1,2253 @@
+{
+	"info": {
+		"_postman_id": "f8499017-79c0-47c5-8ba2-579cef4b42a7",
+		"name": "Server collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Post an account (Team Ten)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6ab66c52-9799-405e-864b-73a3993e6720",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var teamtenId = jsonData._id;",
+									"pm.environment.set(\"teamtenId\",teamtenId);",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"fname\");",
+									"    pm.expect(pm.response.text()).to.include(\"lname\");",
+									"    pm.expect(pm.response.text()).to.include(\"username\");",
+									"    pm.expect(pm.response.text()).to.include(\"email\");",
+									"});",
+									"",
+									"pm.test(\"Expected Team as a firstname\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.fname).to.eql(\"Team\");",
+									"});",
+									"",
+									"pm.test(\"Expected Ten as a lastname\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.lname).to.eql(\"Ten\");",
+									"});",
+									"",
+									"pm.test(\"Expected team10 as username\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.username).to.eql(\"team10\");",
+									"});",
+									"",
+									"pm.test(\"Expected team10@gu.se as an email\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.email).to.eql(\"team10@gu.se\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fname\": \"Team\",\n    \"lname\": \"Ten\",\n    \"username\": \"team10\",\n    \"email\": \"team10@gu.se\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post an account (Jennifer Aniston)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8177d085-e756-43b5-a08a-1b6f1fe09202",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var janistonId = jsonData._id;",
+									"pm.environment.set(\"janistonId\",janistonId);",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fname\": \"Jennifer\",\n    \"lname\": \"Aniston\",\n    \"username\": \"j.aniston\",\n    \"email\": \"j.aniston@gu.se\"\n   \n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post an account (Jennifer Watson)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "727bee49-4cc2-4185-9894-8841594ac49b",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var watsonId = jsonData._id;",
+									"pm.environment.set(\"watsonId\",watsonId);",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fname\": \"Jennifer\",\n    \"lname\": \"Watson\",\n    \"username\": \"j.watson\",\n    \"email\": \"j.watson@gu.se\"\n   \n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get 'Team Ten' account by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6ba5697-6196-4295-a5b8-704f80f9fd7b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts/{{teamtenId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"{{teamtenId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get 'Jennifer Aniston' account by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "757fb1e3-3f41-41c9-bfce-8bb1413b73e0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts/{{janistonId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"{{janistonId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get 'Jennifer Aniston' account by id  (filter)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7cbee27e-5614-412e-ab6f-5ea3fb717207",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "_id",
+									"value": "{{janistonId}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put 'Team Ten'  account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1955217b-2702-4659-88cd-2db7a63c6535",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fname\" : \"Team\",\n    \"lname\" : \"Twenty\",\n    \"username\" : \"team20\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts/{{teamtenId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"{{teamtenId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all accounts (filter also)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "24e099c0-6f5e-4a24-ba18-81db692b28b4",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/accounts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "fname",
+									"value": "Jennifer",
+									"disabled": true
+								},
+								{
+									"key": "lname",
+									"value": "Aniston2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch (update) a specific account by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7dd0a89-7b96-48a7-9c71-f653061a7c53",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lname\" : \"Pitt\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts/{{janistonId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"{{janistonId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a specific account by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0e1500c3-9098-4f88-9114-42060546c538",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts/{{janistonId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"{{janistonId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all accounts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "71d8b06c-030e-4985-b0cb-3c8550120094",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/accounts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post an account (Team Ten) after removing it",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "04aea098-2bd6-4f7d-9d7c-26ed7a95359d",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var teamtenId = jsonData._id;",
+									"pm.environment.set(\"teamtenId\",teamtenId);",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"fname\");",
+									"    pm.expect(pm.response.text()).to.include(\"lname\");",
+									"    pm.expect(pm.response.text()).to.include(\"username\");",
+									"    pm.expect(pm.response.text()).to.include(\"email\");",
+									"});",
+									"",
+									"pm.test(\"Expected Team as a firstname\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.fname).to.eql(\"Team\");",
+									"});",
+									"",
+									"pm.test(\"Expected Ten as a lastname\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.lname).to.eql(\"Ten\");",
+									"});",
+									"",
+									"pm.test(\"Expected team10 as username\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.username).to.eql(\"team10\");",
+									"});",
+									"",
+									"pm.test(\"Expected team10@gu.se as an email\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.email).to.eql(\"team10@gu.se\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fname\": \"Team\",\n    \"lname\": \"Ten\",\n    \"username\": \"team10\",\n    \"email\": \"team10@gu.se\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post an account (Jennifer Aniston)  after removing it",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "47ceb365-c0cd-4899-9159-2cb47ec80afd",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var janistonId = jsonData._id;",
+									"pm.environment.set(\"janistonId\",janistonId);",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fname\": \"Jennifer\",\n    \"lname\": \"Aniston\",\n    \"username\": \"j.aniston\",\n    \"email\": \"j.aniston@gu.se\"\n   \n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post an account (Jennifer Watson) after removing it",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8ec88cfe-ed24-42bf-9d33-f8d998a392a9",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var watsonId = jsonData._id;",
+									"pm.environment.set(\"watsonId\",watsonId);",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fname\": \"Jennifer\",\n    \"lname\": \"Watson\",\n    \"username\": \"j.watson\",\n    \"email\": \"j.watson@gu.se\"\n   \n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Stories",
+			"item": [
+				{
+					"name": "Post a story by 'Team Ten'",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0f76c174-3375-4ed9-9550-2972f438f012",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var teamTenStoryId = jsonData._id;",
+									"pm.environment.set(\"teamTenStoryId\",teamTenStoryId);",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"content\");",
+									"    pm.expect(pm.response.text()).to.include(\"title\");",
+									"    pm.expect(pm.response.text()).to.include(\"account\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"content\" : \"Team ten has a sad story, they are stuck at many points of this code!\",\n  \"title\": \"Team Ten title\",\n  \"account\" : \"{{teamtenId}}\"\n\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts/{{teamtenId}}/stories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"{{teamtenId}}",
+								"stories"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all stories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a97d5003-c463-40c0-9553-3a1bd976d206",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/stories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"stories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a a specific team ten's story by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4cd75d2c-9d64-42a5-b2f6-b1e46a73e9db",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/stories/{{teamTenStoryId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"stories",
+								"{{teamTenStoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all stories for  'Team Ten' by their account  id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b019cdb0-b2da-4e26-8aff-8d6f85d28997",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/accounts/{{teamtenId}}/stories/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"{{teamtenId}}",
+								"stories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific story for 'Team Ten' by their account id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a3772cbb-5438-4bd8-8e7b-ff31e050cc82",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/accounts/{{teamtenId}}/stories/{{teamTenStoryId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"{{teamtenId}}",
+								"stories",
+								"{{teamTenStoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put (replace) a specific Story",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "19912582-a770-4ce1-997b-0363de278d4b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\" : \"Team ten lives are now better, at least something is working!\",\n    \"account\" : \"{{teamtenId}}\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/stories/{{teamTenStoryId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"stories",
+								"{{teamTenStoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch (update) a specific story",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f3be3bd4-e1d9-4d4c-ad54-45cdb52dd841",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\" : \"This is an updated version of team tens's previous story!\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/stories/{{teamTenStoryId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"stories",
+								"{{teamTenStoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete 'Team Ten' story by storyId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "13760cba-29b5-4c5f-8430-8c45f197f1de",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/stories/{{teamTenStoryId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"stories",
+								"{{teamTenStoryId}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all stories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9c0282f0-d128-46c1-a0e4-26d09c99dac0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/stories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"stories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post a story by 'Team Ten' agian",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cccfeff8-cbc9-49b8-9cf4-057c8eae5abd",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var teamTenStoryId = jsonData._id;",
+									"pm.environment.set(\"teamTenStoryId\",teamTenStoryId);",
+									"",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"content\");",
+									"    pm.expect(pm.response.text()).to.include(\"account\");",
+									"    pm.expect(pm.response.text()).to.include(\"account\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"content\" : \"Team ten has a sad story, they are stuck at many points of this code!\",\n  \"title\"   : \"A new Team Ten story title\", \n  \"account\" : \"{{teamtenId}}\"\n}   ",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts/{{teamtenId}}/stories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"{{teamtenId}}",
+								"stories"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create story by Jennifer Aniston",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2e2b5474-f84c-47f8-a9cb-896dd1b748ec",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var janistonStoryId = jsonData._id;",
+									"pm.environment.set(\"janistonStoryId\",janistonStoryId);",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"content\" : \"This is a story by Jennifer Aniston\",\n  \"title\"   : \"Aniston story\",\n  \"account\" : \"{{janistonId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts/{{janistonId}}/stories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"{{janistonId}}",
+								"stories"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Create a new review",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b47e1084-24e4-45a5-aa09-84878964c1e0",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var reviewId = jsonData._id;",
+									"pm.environment.set(\"reviewId\",reviewId);",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"it is a review by J. Aniston on Team Ten's stoy!\",\n    \"title\": \"A review title\",\n    \"account\": \"{{janistonId}}\",\n    \"story\": \"{{teamTenStoryId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/reviews",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a review by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "119c284f-1c2a-409b-863e-bb9977ba59fd",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/reviews/{{reviewId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"{{reviewId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/reviews",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a review for specific story by a specific account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6f50414-dd79-409a-a0bb-25d43e8d77c4",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/accounts/{{teamtenId}}/reviews/{{reviewId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"{{teamtenId}}",
+								"reviews",
+								"{{reviewId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new review again",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "09981b6c-9685-4df2-883e-bf4a7a0529b5",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var reviewId = jsonData._id;",
+									"pm.environment.set(\"reviewId\",reviewId);",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"it is a review 101 Eric is sharp 2\",\n    \"title\": \"A review title\",\n    \"account\": \"{{janistonId}}\",\n    \"story\": \"{{teamTenStoryId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/reviews",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delecte a review by its id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da2cc563-7eb7-43f0-9b0e-63a2c9d36c68",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/reviews/{{reviewId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"{{reviewId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new review again",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7115c1a3-0db7-457c-ad1c-58e922d4a8cd",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"it is a review 101 Eric is sharp 2\",\n    \"title\": \"A review title\",\n    \"account\": \"{{janistonId}}\",\n    \"story\": \"{{teamTenStoryId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/reviews",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all reviews",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a2b203d-19b2-4da8-b9df-89163fa71a0c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/reviews",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Story tails",
+			"item": [
+				{
+					"name": "POST new storyTail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "69877181-8b62-4633-b917-dddf70bcd580",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var storyTailId = jsonData._id;",
+									"pm.environment.set(\"storyTailId\",storyTailId);",
+									"",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"content\": \"it is a story tail by J. Watson!\",\n    \"account\": \"{{watsonId}}\" ,\n    \"story\": \"{{janistonStoryId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/storytails",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"storytails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST new storyTail teamten",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb43aab0-f12d-461b-b84b-e70c82a47f5c",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var storyTailId = jsonData._id;",
+									"pm.environment.set(\"storyTailId\",storyTailId);",
+									"",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"content\": \"it is a story tail by J. Watson!\",\n    \"account\": \"{{watsonId}}\" ,\n    \"story\": \"{{janistonStoryId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/storytails",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"storytails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get storytail by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1fdd7fc2-4942-44b2-a359-8a6c2798573e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/storytails/{{storyTailId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"storytails",
+								"{{storyTailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all storytails by story id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8fad22a9-86a9-48cf-99e1-bdd0cbbd69ab",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/storytails/{{storyTailId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"storytails",
+								"{{storyTailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Storytails",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8fb70f42-2362-455e-8532-0422cd5feb5f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/storytails",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"storytails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put (replace) a specific story tail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6bbc813b-8e77-44cc-b8e9-2da57d0584fa",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\" : \"A new story tail: Team ten lives are now better, at least something is working!\",\n    \"account\" : \"{{watsonId}}\",\n    \"story\": \"{{teamTenStoryId}}\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/storytails/{{storyTailId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"storytails",
+								"{{storyTailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch (update) a specific story tail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a0710b54-6778-4339-b025-139153b00a2f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\" : \"This is an updated version of J. Watson's  previous story tail!\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/storytails/{{storyTailId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"storytails",
+								"{{storyTailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all storytails",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8a73571b-4c2f-415f-a74f-b2a3f3b81e33",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/storytails",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"storytails"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Delete all accounts (empty the database)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3c44231b-eb85-4817-af7b-4b7df82fbc81",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/accounts",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete all stories (empty the database)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fc3b9e6d-6e72-4f2c-86d5-fcddb8270a28",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/stories",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"stories"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
